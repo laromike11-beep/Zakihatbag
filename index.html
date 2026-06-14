@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>قبعة صيفية + حقيبة أنيقة | عرض الصيف</title>
+  <!-- Google Fonts: Arabic friendly -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #fef8f0;
+      color: #2c2b2a;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* main grid */
+    .landing-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      background: #ffffff;
+      border-radius: 2rem;
+      box-shadow: 0 25px 45px -12px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    /* product side: gallery + details */
+    .product-showcase {
+      flex: 1.2;
+      background: #fffaf5;
+      padding: 2rem 1.8rem;
+    }
+
+    /* form side */
+    .form-side {
+      flex: 1;
+      background: white;
+      padding: 2rem 2rem 2.2rem;
+      border-right: 1px solid #f0e2d4;
+    }
+
+    /* image gallery */
+    .image-area {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .main-img-box {
+      background: #f7ede4;
+      border-radius: 28px;
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      border: 1px solid #ffe0cc;
+    }
+
+    .main-img-box img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+      max-height: 400px;
+    }
+
+    .thumbnail-strip {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .thumbnail {
+      width: 80px;
+      height: 80px;
+      background: #f3e9e0;
+      border-radius: 18px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: 0.2s;
+    }
+
+    .thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .thumbnail.active {
+      border-color: #d97706;
+      box-shadow: 0 2px 8px rgba(217,119,6,0.3);
+    }
+
+    .badge-summer {
+      background: #d97706;
+      color: white;
+      font-weight: 700;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .product-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      color: #3b2c1f;
+    }
+
+    .price-highlight {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #d97706;
+      margin: 0.75rem 0 0.2rem;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin: 1.2rem 0;
+    }
+
+    .feature-list li {
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .feature-list i {
+      color: #d97706;
+      width: 1.6rem;
+    }
+
+    hr {
+      margin: 1rem 0;
+      border-color: #f0e0d0;
+    }
+
+    /* form style RTL */
+    .form-title {
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-sub {
+      color: #7c6b5a;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid #f0e2d4;
+      padding-bottom: 0.6rem;
+    }
+
+    .input-group {
+      margin-bottom: 1.2rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .input-group label {
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .input-group input, .input-group select {
+      padding: 0.8rem 1rem;
+      border: 1px solid #e2d4c8;
+      border-radius: 1rem;
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.95rem;
+      background: #fefcf9;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: #d97706;
+      box-shadow: 0 0 0 3px rgba(217,119,6,0.2);
+    }
+
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #f9f2ea;
+      width: fit-content;
+      border-radius: 40px;
+      padding: 0.2rem 0.8rem;
+      border: 1px solid #e8d9cd;
+    }
+
+    .qty-btn {
+      background: white;
+      border: none;
+      font-size: 1.4rem;
+      font-weight: bold;
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 40px;
+      cursor: pointer;
+      color: #d97706;
+      transition: 0.1s;
+    }
+
+    .qty-btn:hover {
+      background: #d97706;
+      color: white;
+    }
+
+    #quantityInput {
+      width: 55px;
+      text-align: center;
+      font-weight: 700;
+      background: transparent;
+      border: none;
+      font-size: 1.1rem;
+    }
+
+    .delivery-cost-row {
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+      margin-top: 6px;
+      font-size: 0.8rem;
+      background: #fef5ec;
+      padding: 0.3rem 0.8rem;
+      border-radius: 30px;
+      width: fit-content;
+    }
+
+    .delivery-fee {
+      font-weight: 800;
+      color: #1f6e43;
+    }
+
+    .order-btn {
+      width: 100%;
+      background: #d97706;
+      border: none;
+      padding: 0.9rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: white;
+      border-radius: 2rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: 0.2s;
+    }
+
+    .order-btn:hover {
+      background: #b45f06;
+      transform: scale(1.01);
+    }
+
+    .toast-msg {
+      position: fixed;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #2c3e2f;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 2rem;
+      font-weight: 500;
+      z-index: 1200;
+      transition: 0.25s;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.2);
+    }
+
+    .toast-msg.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.75rem;
+      color: #9a897b;
+    }
+
+    @media (max-width: 800px) {
+      .container {
+        padding: 1rem;
+      }
+      .form-side {
+        border-right: none;
+        border-top: 1px solid #f0e2d4;
+      }
+      .product-title {
+        font-size: 1.6rem;
+      }
+      .thumbnail {
+        width: 60px;
+        height: 60px;
+      }
+    }
+
+    .wilaya-hint {
+      font-size: 0.7rem;
+      color: #aa8b6e;
+    }
+    .placeholder-icon {
+      font-size: 4rem;
+      color: #d97706;
+      background: #fff1e6;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-direction: column;
+      padding: 2rem;
+      text-align: center;
+    }
+    .loading-text {
+      font-size: 0.9rem;
+      color: #a07a52;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="landing-grid">
+    <!-- قسم المنتج: قبعة صيفية + حقيبة -->
+    <div class="product-showcase">
+      <div class="badge-summer">🌞 تشكيلة الصيف 2025 🌞</div>
+      <h1 class="product-title">قبعة صيفية عصرية + حقيبة يد أنيقة</h1>
+      <div class="price-highlight">3.490 دج</div>
+      <div style="display: flex; gap: 10px; margin: 6px 0;">
+        <span style="background:#f0ede8; padding:0 0.8rem; border-radius:30px; font-size:0.75rem;">توصيل سريع</span>
+        <span style="background:#f0ede8; padding:0 0.8rem; border-radius:30px; font-size:0.75rem;">الدفع عند الاستلام</span>
+      </div>
+
+      <!-- معرض الصور - سيتم تحميل الصور 1-hatbag, 2-hatbag, 3-hatbag, 4-hatbag -->
+      <div class="image-area">
+        <div class="main-img-box" id="mainImageBox">
+          <div class="placeholder-icon" id="imgPlaceholder">
+            <i class="fas fa-hat-cowboy"></i>
+            <i class="fas fa-shopping-bag"></i>
+            <div class="loading-text">جاري تحميل الصور ...</div>
+          </div>
+          <img id="mainProductImage" style="display: none; width:100%;" alt="قبعة وحقيبة">
+        </div>
+        <div class="thumbnail-strip" id="thumbnailsContainer"></div>
+        <p class="wilaya-hint"><i class="fas fa-image"></i> الصور: 1-hatbag ، 2-hatbag ، 3-hatbag ، 4-hatbag (ضعها في مجلد images)</p>
+      </div>
+
+      <ul class="feature-list">
+        <li><i class="fas fa-sun"></i> قبعة صيفية قطنية - حماية من الشمس</li>
+        <li><i class="fas fa-hand-peace"></i> حقيبة يد متعددة الاستعمالات (جلدي طبيعي)</li>
+        <li><i class="fas fa-fan"></i> تهوية ممتازة للقبعة + تصميم أنيق</li>
+        <li><i class="fas fa-truck"></i> توصيل لكل ولايات الجزائر + تكلفة حسب المنطقة</li>
+      </ul>
+      <div style="background:#fff2e6; border-radius: 20px; padding: 10px; text-align: center; margin-top: 10px;">
+        <i class="fas fa-tags"></i> قبعة + حقيبة معًا بسعر مميز · كمية محدودة
+      </div>
+    </div>
+
+    <!-- نموذج الطلب: الاسم، الهاتف، الولاية (69 ولاية)، البلدية، الكمية -->
+    <div class="form-side">
+      <div class="form-title">
+        <i class="fas fa-clipboard-list"></i> اطلب القبعة والحقيبة الآن
+      </div>
+      <div class="form-sub">املأ البيانات وسنتصل بك لتأكيد الطلب</div>
+
+      <form id="orderForm">
+        <div class="input-group">
+          <label><i class="fas fa-user"></i> الاسم الكامل *</label>
+          <input type="text" id="fullName" placeholder="مثال: سارة بن عمر" required>
+        </div>
+
+        <div class="input-group">
+          <label><i class="fas fa-mobile-alt"></i> رقم الهاتف *</label>
+          <input type="tel" id="phone" placeholder="05XX XX XX XX" required>
+        </div>
+
+        <div class="input-group">
+          <label><i class="fas fa-map-marker-alt"></i> الولاية *</label>
+          <select id="wilayaSelect" required>
+            <option value="" disabled selected>-- اختر الولاية --</option>
+          </select>
+          <div class="delivery-cost-row" id="deliveryInfoRow">
+            <span><i class="fas fa-money-bill-wave"></i> تكلفة التوصيل: </span>
+            <span id="deliveryFeeValue" class="delivery-fee">--- دج</span>
+          </div>
+          <div class="wilaya-hint">* التوصيل لكل ولاية بتكلفة مختلفة (يمكن تعديلها حسب كل ولاية).</div>
+        </div>
+
+        <div class="input-group">
+          <label><i class="fas fa-city"></i> البلدية / المنطقة *</label>
+          <input type="text" id="commune" placeholder="مثال: سيدي امحمد، الحراش، القبة..." required>
+        </div>
+
+        <div class="input-group">
+          <label><i class="fas fa-box"></i> الكمية (مجموعة قبعة + حقيبة) *</label>
+          <div class="quantity-selector">
+            <button type="button" class="qty-btn" id="decrementQty">−</button>
+            <input type="number" id="quantityInput" value="1" min="1" max="50" readonly>
+            <button type="button" class="qty-btn" id="incrementQty">+</button>
+          </div>
+        </div>
+
+        <input type="hidden" name="product" value="قبعة صيفية + حقيبة يد أنيقة">
+        <button type="submit" class="order-btn"><i class="fas fa-check-circle"></i> تأكيد الطلب</button>
+        <p style="font-size: 0.7rem; text-align: center; margin-top: 1rem;"><i class="fas fa-shield-alt"></i> معلوماتك آمنة · الدفع عند الاستلام</p>
+      </form>
+    </div>
+  </div>
+  <footer>
+    © 2025 متجر القبعة والحقيبة | جميع ولايات الجزائر · خدمة توصيل سريعة
+  </footer>
+</div>
+
+<div id="globalToast" class="toast-msg">✅ تم حفظ طلبك</div>
+
+<script>
+  // ------------------------------
+  // 1. قائمة الولايات الـ 69 كاملة (أسماء بالعربية)
+  // ------------------------------
+  const algeriaWilayasComplete = [
+    "أدرار", "الشلف", "الأغواط", "أم البواقي", "باتنة", "بجاية", "بسكرة", "بشار", "البليدة", "البويرة",
+    "تمنراست", "تبسة", "تلمسان", "تيارت", "تيزي وزو", "الجزائر", "الجلفة", "جيجل", "سطيف", "سعيدة",
+    "سكيكدة", "سيدي بلعباس", "عنابة", "قالمة", "قسنطينة", "المدية", "مستغانم", "المسيلة", "معسكر", "ورقلة",
+    "وهران", "البيض", "إيليزي", "برج بوعريريج", "بومرداس", "الطارف", "تندوف", "تيسمسيلت", "الوادي", "خنشلة",
+    "سوق أهراس", "تيبازة", "ميلة", "عين الدفلى", "النعامة", "عين تموشنت", "غرداية", "غليزان",
+    "تيميمون", "برج باجي مختار", "أولاد جلال", "بني عباس", "إن صالح", "إن قزام", "توقرت", "جانت", "المغير", "المنيعة"
+  ];
+
+  // ------------------------------
+  // 2. تكاليف التوصيل حسب الولاية (قابلة للتعديل)
+  // ------------------------------
+  let wilayaDeliveryCostMap = {
+    "الجزائر": 200, "وهران": 350, "قسنطينة": 320, "عنابة": 380, "باتنة": 390, "بجاية": 370, "تيزي وزو": 340,
+    "البليدة": 240, "سطيف": 360, "سكيكدة": 390, "تيارت": 400, "بسكرة": 410, "تلمسان": 380, "الشلف": 330,
+    "الأغواط": 430, "أم البواقي": 410, "بشار": 590, "البويرة": 290, "تمنراست": 790, "تبسة": 450,
+    "الجلفة": 470, "جيجل": 380, "سعيدة": 460, "سيدي بلعباس": 400, "قالمة": 390, "المدية": 310,
+    "مستغانم": 360, "المسيلة": 380, "معسكر": 390, "ورقلة": 560, "البيض": 530, "إيليزي": 810,
+    "برج بوعريريج": 360, "بومرداس": 230, "الطارف": 440, "تندوف": 890, "تيسمسيلت": 420, "الوادي": 540,
+    "خنشلة": 460, "سوق أهراس": 440, "تيبازة": 260, "ميلة": 390, "عين الدفلى": 340, "النعامة": 550,
+    "عين تموشنت": 400, "غرداية": 580, "غليزان": 390, "تيميمون": 790, "برج باجي مختار": 880, "أولاد جلال": 520,
+    "بني عباس": 740, "إن صالح": 890, "إن قزام": 950, "توقرت": 560, "جانت": 970, "المغير": 540, "المنيعة": 680
+  };
+
+  function getDeliveryFee(wilayaName) {
+    if (wilayaDeliveryCostMap.hasOwnProperty(wilayaName)) {
+      return wilayaDeliveryCostMap[wilayaName];
+    }
+    return 300;
+  }
+
+  // ------------------------------
+  // 3. ملء قائمة select بالولايات
+  // ------------------------------
+  const wilayaSelect = document.getElementById('wilayaSelect');
+  algeriaWilayasComplete.forEach(wil => {
+    const option = document.createElement('option');
+    option.value = wil;
+    option.textContent = wil;
+    wilayaSelect.appendChild(option);
+  });
+
+  const deliveryFeeSpan = document.getElementById('deliveryFeeValue');
+  function updateDeliveryDisplay() {
+    const selectedWil = wilayaSelect.value;
+    if (selectedWil) {
+      const cost = getDeliveryFee(selectedWil);
+      deliveryFeeSpan.textContent = cost + " دج";
+    } else {
+      deliveryFeeSpan.textContent = "--- دج";
+    }
+  }
+  wilayaSelect.addEventListener('change', updateDeliveryDisplay);
+  updateDeliveryDisplay();
+
+  // ------------------------------
+  // 4. الكمية
+  // ------------------------------
+  const decrementBtn = document.getElementById('decrementQty');
+  const incrementBtn = document.getElementById('incrementQty');
+  const quantityInput = document.getElementById('quantityInput');
+  function changeQty(delta) {
+    let val = parseInt(quantityInput.value) || 1;
+    val += delta;
+    if (val < 1) val = 1;
+    if (val > 50) val = 50;
+    quantityInput.value = val;
+  }
+  decrementBtn.addEventListener('click', () => changeQty(-1));
+  incrementBtn.addEventListener('click', () => changeQty(1));
+
+  // ------------------------------
+  // 5. معرض الصور: 1-hatbag, 2-hatbag, 3-hatbag, 4-hatbag
+  // ------------------------------
+  // مسار الصور: images/1-hatbag.jpg (يمكنك تغيير الامتداد إلى .png أو .webp حسب صورك)
+  const imageNames = ["1-hatbag", "2-hatbag", "3-hatbag", "4-hatbag"];
+  const imageExtension = ".jpg";  // غيّر إلى .png إذا كانت صورك بصيغة PNG
+  
+  // بناء المسارات الكاملة
+  const productImages = imageNames.map(name => `images/${name}${imageExtension}`);
+  
+  const mainImg = document.getElementById('mainProductImage');
+  const imgPlaceholderDiv = document.getElementById('imgPlaceholder');
+  const thumbContainer = document.getElementById('thumbnailsContainer');
+
+  function setActiveImage(index) {
+    if (productImages && productImages[index]) {
+      mainImg.src = productImages[index];
+      mainImg.style.display = 'block';
+      imgPlaceholderDiv.style.display = 'none';
+      // تحديث النشاط
+      document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+        if (i === index) thumb.classList.add('active');
+        else thumb.classList.remove('active');
+      });
+    }
+  }
+
+  // إنشاء المصغرات
+  if (productImages && productImages.length > 0) {
+    mainImg.style.display = 'none';
+    imgPlaceholderDiv.style.display = 'flex';
+    
+    productImages.forEach((imgUrl, idx) => {
+      const thumbDiv = document.createElement('div');
+      thumbDiv.className = 'thumbnail';
+      if (idx === 0) thumbDiv.classList.add('active');
+      const thumbImg = document.createElement('img');
+      thumbImg.src = imgUrl;
+      thumbImg.alt = `صورة المنتج ${idx+1}`;
+      thumbImg.onerror = function() {
+        // إذا فشل تحميل الصورة، نعرض أيقونة افتراضية
+        this.src = "https://placehold.co/80x80/FCE9D8/D97706?text=صورة+"+(idx+1);
+      };
+      thumbDiv.appendChild(thumbImg);
+      thumbDiv.addEventListener('click', () => setActiveImage(idx));
+      thumbContainer.appendChild(thumbDiv);
+    });
+    
+    // تعيين الصورة الأولى
+    if (productImages[0]) {
+      mainImg.src = productImages[0];
+      mainImg.onload = function() {
+        mainImg.style.display = 'block';
+        imgPlaceholderDiv.style.display = 'none';
+      };
+      mainImg.onerror = function() {
+        // إذا فشلت الصورة الرئيسية نظهر placeholder
+        imgPlaceholderDiv.style.display = 'flex';
+        mainImg.style.display = 'none';
+      };
+      // محاولة التحميل
+      if (mainImg.complete && mainImg.naturalHeight !== 0) {
+        mainImg.style.display = 'block';
+        imgPlaceholderDiv.style.display = 'none';
+      }
+    }
+  }
+
+  // ------------------------------
+  // 6. إرسال النموذج
+  // ------------------------------
+  const toastMsg = document.getElementById('globalToast');
+  function showNotif(message, isError = false) {
+    toastMsg.textContent = message;
+    toastMsg.style.background = isError ? '#b91c1c' : '#2c5e2f';
+    toastMsg.classList.add('show');
+    setTimeout(() => {
+      toastMsg.classList.remove('show');
+      setTimeout(() => { toastMsg.style.background = '#2c3e2f'; }, 300);
+    }, 3500);
+  }
+
+  const orderForm = document.getElementById('orderForm');
+  orderForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const fullName = document.getElementById('fullName').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const wilaya = wilayaSelect.value;
+    const commune = document.getElementById('commune').value.trim();
+    let quantity = parseInt(quantityInput.value);
+    if (isNaN(quantity) || quantity < 1) quantity = 1;
+
+    if (!fullName) { showNotif("❌ الرجاء إدخال الاسم الكامل", true); return; }
+    if (!phone) { showNotif("📱 يرجى كتابة رقم الهاتف", true); return; }
+    const phoneDigits = phone.replace(/\D/g, '');
+    if (phoneDigits.length < 9) { showNotif("⚠️ رقم الهاتف يجب أن يحتوي على 9 أرقام على الأقل", true); return; }
+    if (!wilaya) { showNotif("🗺️ اختر الولاية من القائمة", true); return; }
+    if (!commune) { showNotif("🏘️ اكتب اسم البلدية أو المنطقة", true); return; }
+
+    const deliveryCost = getDeliveryFee(wilaya);
+    const productPrice = 3490;
+    const subtotal = productPrice * quantity;
+    const totalAmount = subtotal + deliveryCost;
+
+    const orderData = {
+      المنتج: "قبعة صيفية + حقيبة يد أنيقة",
+      الاسم: fullName,
+      الهاتف: phone,
+      الولاية: wilaya,
+      البلدية: commune,
+      الكمية: quantity,
+      سعر_الوحدة: productPrice + " دج",
+      تكلفة_التوصيل: deliveryCost + " دج",
+      الإجمالي: totalAmount + " دج",
+      timestamp: new Date().toISOString()
+    };
+
+    // حفظ في localStorage
+    let previousOrders = [];
+    const storedOrders = localStorage.getItem('chapeau_bag_orders');
+    if (storedOrders) {
+      try { previousOrders = JSON.parse(storedOrders); } catch(e) {}
+    }
+    previousOrders.push(orderData);
+    localStorage.setItem('chapeau_bag_orders', JSON.stringify(previousOrders));
+    console.log("طلب قبعة + حقيبة:", orderData);
+
+    showNotif(`✅ تم استلام طلبك! ${fullName}، سنتصل بك قريبًا على ${phone}. الإجمالي (مع التوصيل): ${totalAmount} دج`, false);
+    document.getElementById('fullName').focus();
+  });
+</script>
+</body>
+</html>
