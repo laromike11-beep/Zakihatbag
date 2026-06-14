@@ -65,7 +65,7 @@
     .main-img-box {
       background: #f7ede4;
       border-radius: 28px;
-      min-height: 320px;
+      min-height: 350px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -77,7 +77,7 @@
     .main-img-box img {
       width: 100%;
       height: auto;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
       max-height: 400px;
     }
@@ -90,8 +90,8 @@
     }
 
     .thumbnail {
-      width: 80px;
-      height: 80px;
+      width: 85px;
+      height: 85px;
       background: #f3e9e0;
       border-radius: 18px;
       overflow: hidden;
@@ -151,11 +151,6 @@
     .feature-list i {
       color: #d97706;
       width: 1.6rem;
-    }
-
-    hr {
-      margin: 1rem 0;
-      border-color: #f0e0d0;
     }
 
     /* form style RTL */
@@ -332,23 +327,20 @@
       font-size: 0.7rem;
       color: #aa8b6e;
     }
-    .placeholder-icon {
-      font-size: 4rem;
-      color: #d97706;
-      background: #fff1e6;
-      width: 100%;
-      height: 100%;
+    
+    .loading-placeholder {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 20px;
-      flex-direction: column;
+      gap: 15px;
       padding: 2rem;
-      text-align: center;
-    }
-    .loading-text {
-      font-size: 0.9rem;
       color: #a07a52;
+    }
+    
+    .loading-placeholder i {
+      font-size: 4rem;
+      color: #d97706;
     }
   </style>
 </head>
@@ -356,78 +348,77 @@
 
 <div class="container">
   <div class="landing-grid">
-    <!-- قسم المنتج: قبعة صيفية + حقيبة -->
+    <!-- Product Section: Summer Hat + Bag -->
     <div class="product-showcase">
-      <div class="badge-summer">🌞 تشكيلة الصيف 2025 🌞</div>
-      <h1 class="product-title">قبعة صيفية عصرية + حقيبة يد أنيقة</h1>
-      <div class="price-highlight">3.490 دج</div>
+      <div class="badge-summer">🌞 Summer Collection 2025 🌞</div>
+      <h1 class="product-title">Stylish Summer Hat + Elegant Handbag</h1>
+      <div class="price-highlight">3,490 DZD</div>
       <div style="display: flex; gap: 10px; margin: 6px 0;">
-        <span style="background:#f0ede8; padding:0 0.8rem; border-radius:30px; font-size:0.75rem;">توصيل سريع</span>
-        <span style="background:#f0ede8; padding:0 0.8rem; border-radius:30px; font-size:0.75rem;">الدفع عند الاستلام</span>
+        <span style="background:#f0ede8; padding:0 0.8rem; border-radius:30px; font-size:0.75rem;">Fast Delivery</span>
+        <span style="background:#f0ede8; padding:0 0.8rem; border-radius:30px; font-size:0.75rem;">Cash on Delivery</span>
       </div>
 
-      <!-- معرض الصور - سيتم تحميل الصور 1-hatbag, 2-hatbag, 3-hatbag, 4-hatbag -->
+      <!-- Image Gallery -->
       <div class="image-area">
         <div class="main-img-box" id="mainImageBox">
-          <div class="placeholder-icon" id="imgPlaceholder">
-            <i class="fas fa-hat-cowboy"></i>
-            <i class="fas fa-shopping-bag"></i>
-            <div class="loading-text">جاري تحميل الصور ...</div>
+          <div class="loading-placeholder" id="imgPlaceholder">
+            <i class="fas fa-image"></i>
+            <div>Loading images...</div>
           </div>
-          <img id="mainProductImage" style="display: none; width:100%;" alt="قبعة وحقيبة">
+          <img id="mainProductImage" style="display: none; width:100%;" alt="Hat and Bag">
         </div>
         <div class="thumbnail-strip" id="thumbnailsContainer"></div>
-        <p class="wilaya-hint"><i class="fas fa-image"></i> الصور: 1-hatbag ، 2-hatbag ، 3-hatbag ، 4-hatbag (ضعها في مجلد images)</p>
+        <p class="wilaya-hint"><i class="fas fa-image"></i> Product images: 1-hatbag, 2-hatbag, 3-hatbag, 4-hatbag</p>
       </div>
 
       <ul class="feature-list">
-        <li><i class="fas fa-sun"></i> قبعة صيفية قطنية - حماية من الشمس</li>
-        <li><i class="fas fa-hand-peace"></i> حقيبة يد متعددة الاستعمالات (جلدي طبيعي)</li>
-        <li><i class="fas fa-fan"></i> تهوية ممتازة للقبعة + تصميم أنيق</li>
-        <li><i class="fas fa-truck"></i> توصيل لكل ولايات الجزائر + تكلفة حسب المنطقة</li>
+        <li><i class="fas fa-sun"></i> Cotton summer hat - UV protection</li>
+        <li><i class="fas fa-hand-peace"></i> Versatile handbag (genuine leather style)</li>
+        <li><i class="fas fa-fan"></i> Breathable hat design + elegant look</li>
+        <li><i class="fas fa-truck"></i> Delivery to all Algerian wilayas + zone-based cost</li>
       </ul>
       <div style="background:#fff2e6; border-radius: 20px; padding: 10px; text-align: center; margin-top: 10px;">
-        <i class="fas fa-tags"></i> قبعة + حقيبة معًا بسعر مميز · كمية محدودة
+        <i class="fas fa-tags"></i> Hat + Bag bundle · Limited quantity
       </div>
     </div>
 
-    <!-- نموذج الطلب: الاسم، الهاتف، الولاية (69 ولاية)، البلدية، الكمية -->
+    <!-- Order Form -->
     <div class="form-side">
       <div class="form-title">
-        <i class="fas fa-clipboard-list"></i> اطلب القبعة والحقيبة الآن
+        <i class="fas fa-clipboard-list"></i> Order Now
       </div>
-      <div class="form-sub">املأ البيانات وسنتصل بك لتأكيد الطلب</div>
+      <div class="form-sub">Fill the form and we'll call you to confirm</div>
 
       <form id="orderForm">
         <div class="input-group">
-          <label><i class="fas fa-user"></i> الاسم الكامل *</label>
-          <input type="text" id="fullName" placeholder="مثال: سارة بن عمر" required>
+          <label><i class="fas fa-user"></i> Full Name *</label>
+          <input type="text" id="fullName" placeholder="Example: Ahmed Benali" required>
         </div>
 
         <div class="input-group">
-          <label><i class="fas fa-mobile-alt"></i> رقم الهاتف *</label>
+          <label><i class="fas fa-mobile-alt"></i> Phone Number *</label>
           <input type="tel" id="phone" placeholder="05XX XX XX XX" required>
         </div>
 
         <div class="input-group">
-          <label><i class="fas fa-map-marker-alt"></i> الولاية *</label>
+          <label><i class="fas fa-map-marker-alt"></i> Wilaya *</label>
           <select id="wilayaSelect" required>
-            <option value="" disabled selected>-- اختر الولاية --</option>
+            <option value="" disabled selected>-- Select your wilaya --</option>
           </select>
           <div class="delivery-cost-row" id="deliveryInfoRow">
-            <span><i class="fas fa-money-bill-wave"></i> تكلفة التوصيل: </span>
-            <span id="deliveryFeeValue" class="delivery-fee">--- دج</span>
+            <span><i class="fas fa-money-bill-wave"></i> Delivery cost: </span>
+            <span id="deliveryFeeValue" class="delivery-fee">--- DZD</span>
           </div>
-          <div class="wilaya-hint">* التوصيل لكل ولاية بتكلفة مختلفة (يمكن تعديلها حسب كل ولاية).</div>
+          <div class="wilaya-hint">* Delivery cost varies by wilaya (adjustable)</div>
         </div>
 
         <div class="input-group">
-          <label><i class="fas fa-city"></i> البلدية / المنطقة *</label>
-          <input type="text" id="commune" placeholder="مثال: سيدي امحمد، الحراش، القبة..." required>
+          <label><i class="fas fa-city"></i> Commune / District *</label>
+          <input type="text" id="commune" placeholder="Example: Sidi M'Hamed, El Harrach..." required>
         </div>
 
         <div class="input-group">
-          <label><i class="fas fa-box"></i> الكمية (مجموعة قبعة + حقيبة) *</label>
+          <label><i class="fas fa-box"></i> Quantity (Hat + Bag set) *</label>
           <div class="quantity-selector">
             <button type="button" class="qty-btn" id="decrementQty">−</button>
             <input type="number" id="quantityInput" value="1" min="1" max="50" readonly>
@@ -435,57 +426,57 @@
           </div>
         </div>
 
-        <input type="hidden" name="product" value="قبعة صيفية + حقيبة يد أنيقة">
-        <button type="submit" class="order-btn"><i class="fas fa-check-circle"></i> تأكيد الطلب</button>
-        <p style="font-size: 0.7rem; text-align: center; margin-top: 1rem;"><i class="fas fa-shield-alt"></i> معلوماتك آمنة · الدفع عند الاستلام</p>
+        <input type="hidden" name="product" value="Summer Hat + Elegant Handbag">
+        <button type="submit" class="order-btn"><i class="fas fa-check-circle"></i> Confirm Order</button>
+        <p style="font-size: 0.7rem; text-align: center; margin-top: 1rem;"><i class="fas fa-shield-alt"></i> Your info is secure · Cash on delivery</p>
       </form>
     </div>
   </div>
   <footer>
-    © 2025 متجر القبعة والحقيبة | جميع ولايات الجزائر · خدمة توصيل سريعة
+    © 2025 Hat & Bag Store | All Algerian wilayas · Fast delivery service
   </footer>
 </div>
 
-<div id="globalToast" class="toast-msg">✅ تم حفظ طلبك</div>
+<div id="globalToast" class="toast-msg">✅ Order received</div>
 
 <script>
-  // ------------------------------
-  // 1. قائمة الولايات الـ 69 كاملة (أسماء بالعربية)
-  // ------------------------------
+  // =============================================
+  // 1. COMPLETE LIST OF 69 ALGERIAN WILAYAS
+  // =============================================
   const algeriaWilayasComplete = [
-    "أدرار", "الشلف", "الأغواط", "أم البواقي", "باتنة", "بجاية", "بسكرة", "بشار", "البليدة", "البويرة",
-    "تمنراست", "تبسة", "تلمسان", "تيارت", "تيزي وزو", "الجزائر", "الجلفة", "جيجل", "سطيف", "سعيدة",
-    "سكيكدة", "سيدي بلعباس", "عنابة", "قالمة", "قسنطينة", "المدية", "مستغانم", "المسيلة", "معسكر", "ورقلة",
-    "وهران", "البيض", "إيليزي", "برج بوعريريج", "بومرداس", "الطارف", "تندوف", "تيسمسيلت", "الوادي", "خنشلة",
-    "سوق أهراس", "تيبازة", "ميلة", "عين الدفلى", "النعامة", "عين تموشنت", "غرداية", "غليزان",
-    "تيميمون", "برج باجي مختار", "أولاد جلال", "بني عباس", "إن صالح", "إن قزام", "توقرت", "جانت", "المغير", "المنيعة"
+    "Adrar", "Chlef", "Laghouat", "Oum El Bouaghi", "Batna", "Béjaïa", "Biskra", "Béchar", "Blida", "Bouira",
+    "Tamanrasset", "Tébessa", "Tlemcen", "Tiaret", "Tizi Ouzou", "Algiers", "Djelfa", "Jijel", "Sétif", "Saïda",
+    "Skikda", "Sidi Bel Abbès", "Annaba", "Guelma", "Constantine", "Médéa", "Mostaganem", "M'Sila", "Mascara", "Ouargla",
+    "Oran", "El Bayadh", "Illizi", "Bordj Bou Arréridj", "Boumerdès", "El Tarf", "Tindouf", "Tissemsilt", "El Oued", "Khenchela",
+    "Souk Ahras", "Tipaza", "Mila", "Aïn Defla", "Naâma", "Aïn Témouchent", "Ghardaïa", "Relizane",
+    "Timimoun", "Bordj Badji Mokhtar", "Ouled Djellal", "Béni Abbès", "In Salah", "In Guezzam", "Touggourt", "Djanet", "El M'Ghair", "El Menia"
   ];
 
-  // ------------------------------
-  // 2. تكاليف التوصيل حسب الولاية (قابلة للتعديل)
-  // ------------------------------
+  // =============================================
+  // 2. DELIVERY COSTS PER WILAYA (EASILY EDITABLE)
+  // =============================================
   let wilayaDeliveryCostMap = {
-    "الجزائر": 200, "وهران": 350, "قسنطينة": 320, "عنابة": 380, "باتنة": 390, "بجاية": 370, "تيزي وزو": 340,
-    "البليدة": 240, "سطيف": 360, "سكيكدة": 390, "تيارت": 400, "بسكرة": 410, "تلمسان": 380, "الشلف": 330,
-    "الأغواط": 430, "أم البواقي": 410, "بشار": 590, "البويرة": 290, "تمنراست": 790, "تبسة": 450,
-    "الجلفة": 470, "جيجل": 380, "سعيدة": 460, "سيدي بلعباس": 400, "قالمة": 390, "المدية": 310,
-    "مستغانم": 360, "المسيلة": 380, "معسكر": 390, "ورقلة": 560, "البيض": 530, "إيليزي": 810,
-    "برج بوعريريج": 360, "بومرداس": 230, "الطارف": 440, "تندوف": 890, "تيسمسيلت": 420, "الوادي": 540,
-    "خنشلة": 460, "سوق أهراس": 440, "تيبازة": 260, "ميلة": 390, "عين الدفلى": 340, "النعامة": 550,
-    "عين تموشنت": 400, "غرداية": 580, "غليزان": 390, "تيميمون": 790, "برج باجي مختار": 880, "أولاد جلال": 520,
-    "بني عباس": 740, "إن صالح": 890, "إن قزام": 950, "توقرت": 560, "جانت": 970, "المغير": 540, "المنيعة": 680
+    "Algiers": 200, "Oran": 350, "Constantine": 320, "Annaba": 380, "Batna": 390, "Béjaïa": 370, "Tizi Ouzou": 340,
+    "Blida": 240, "Sétif": 360, "Skikda": 390, "Tiaret": 400, "Biskra": 410, "Tlemcen": 380, "Chlef": 330,
+    "Laghouat": 430, "Oum El Bouaghi": 410, "Béchar": 590, "Bouira": 290, "Tamanrasset": 790, "Tébessa": 450,
+    "Djelfa": 470, "Jijel": 380, "Saïda": 460, "Sidi Bel Abbès": 400, "Guelma": 390, "Médéa": 310,
+    "Mostaganem": 360, "M'Sila": 380, "Mascara": 390, "Ouargla": 560, "El Bayadh": 530, "Illizi": 810,
+    "Bordj Bou Arréridj": 360, "Boumerdès": 230, "El Tarf": 440, "Tindouf": 890, "Tissemsilt": 420, "El Oued": 540,
+    "Khenchela": 460, "Souk Ahras": 440, "Tipaza": 260, "Mila": 390, "Aïn Defla": 340, "Naâma": 550,
+    "Aïn Témouchent": 400, "Ghardaïa": 580, "Relizane": 390, "Timimoun": 790, "Bordj Badji Mokhtar": 880, "Ouled Djellal": 520,
+    "Béni Abbès": 740, "In Salah": 890, "In Guezzam": 950, "Touggourt": 560, "Djanet": 970, "El M'Ghair": 540, "El Menia": 680
   };
 
   function getDeliveryFee(wilayaName) {
     if (wilayaDeliveryCostMap.hasOwnProperty(wilayaName)) {
       return wilayaDeliveryCostMap[wilayaName];
     }
-    return 300;
+    return 300; // Default fee
   }
 
-  // ------------------------------
-  // 3. ملء قائمة select بالولايات
-  // ------------------------------
+  // =============================================
+  // 3. POPULATE WILAYA SELECT DROPDOWN
+  // =============================================
   const wilayaSelect = document.getElementById('wilayaSelect');
   algeriaWilayasComplete.forEach(wil => {
     const option = document.createElement('option');
@@ -499,20 +490,21 @@
     const selectedWil = wilayaSelect.value;
     if (selectedWil) {
       const cost = getDeliveryFee(selectedWil);
-      deliveryFeeSpan.textContent = cost + " دج";
+      deliveryFeeSpan.textContent = cost + " DZD";
     } else {
-      deliveryFeeSpan.textContent = "--- دج";
+      deliveryFeeSpan.textContent = "--- DZD";
     }
   }
   wilayaSelect.addEventListener('change', updateDeliveryDisplay);
   updateDeliveryDisplay();
 
-  // ------------------------------
-  // 4. الكمية
-  // ------------------------------
+  // =============================================
+  // 4. QUANTITY CONTROLS
+  // =============================================
   const decrementBtn = document.getElementById('decrementQty');
   const incrementBtn = document.getElementById('incrementQty');
   const quantityInput = document.getElementById('quantityInput');
+  
   function changeQty(delta) {
     let val = parseInt(quantityInput.value) || 1;
     val += delta;
@@ -520,82 +512,84 @@
     if (val > 50) val = 50;
     quantityInput.value = val;
   }
+  
   decrementBtn.addEventListener('click', () => changeQty(-1));
   incrementBtn.addEventListener('click', () => changeQty(1));
 
-  // ------------------------------
-  // 5. معرض الصور: 1-hatbag, 2-hatbag, 3-hatbag, 4-hatbag
-  // ------------------------------
-  // مسار الصور: images/1-hatbag.jpg (يمكنك تغيير الامتداد إلى .png أو .webp حسب صورك)
-  const imageNames = ["1-hatbag", "2-hatbag", "3-hatbag", "4-hatbag"];
-  const imageExtension = ".jpeg";  // غيّر إلى .png إذا كانت صورك بصيغة PNG
-  
-  // بناء المسارات الكاملة
-  const productImages = imageNames.map(name => `images/${name}${imageExtension}`);
+  // =============================================
+  // 5. IMAGE GALLERY - YOUR EXACT FILES
+  //    Images: 1-hatbag.jpeg, 2-hatbag.jpeg, 3-hatbag.jpeg, 4-hatbag.jpeg
+  // =============================================
+  // These are your actual image filenames in the same folder
+  const productImages = [
+    "1-hatbag.jpeg",
+    "2-hatbag.jpeg", 
+    "3-hatbag.jpeg",
+    "4-hatbag.jpeg"
+  ];
   
   const mainImg = document.getElementById('mainProductImage');
   const imgPlaceholderDiv = document.getElementById('imgPlaceholder');
   const thumbContainer = document.getElementById('thumbnailsContainer');
+  let currentImageIndex = 0;
 
   function setActiveImage(index) {
-    if (productImages && productImages[index]) {
+    if (index >= 0 && index < productImages.length) {
+      currentImageIndex = index;
       mainImg.src = productImages[index];
       mainImg.style.display = 'block';
       imgPlaceholderDiv.style.display = 'none';
-      // تحديث النشاط
+      
+      // Update active thumbnail styling
       document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
-        if (i === index) thumb.classList.add('active');
-        else thumb.classList.remove('active');
+        if (i === index) {
+          thumb.classList.add('active');
+        } else {
+          thumb.classList.remove('active');
+        }
       });
     }
   }
 
-  // إنشاء المصغرات
-  if (productImages && productImages.length > 0) {
-    mainImg.style.display = 'none';
-    imgPlaceholderDiv.style.display = 'flex';
+  // Create thumbnail strip
+  productImages.forEach((imgUrl, idx) => {
+    const thumbDiv = document.createElement('div');
+    thumbDiv.className = 'thumbnail';
+    if (idx === 0) thumbDiv.classList.add('active');
     
-    productImages.forEach((imgUrl, idx) => {
-      const thumbDiv = document.createElement('div');
-      thumbDiv.className = 'thumbnail';
-      if (idx === 0) thumbDiv.classList.add('active');
-      const thumbImg = document.createElement('img');
-      thumbImg.src = imgUrl;
-      thumbImg.alt = `صورة المنتج ${idx+1}`;
-      thumbImg.onerror = function() {
-        // إذا فشل تحميل الصورة، نعرض أيقونة افتراضية
-        this.src = "https://placehold.co/80x80/FCE9D8/D97706?text=صورة+"+(idx+1);
-      };
-      thumbDiv.appendChild(thumbImg);
-      thumbDiv.addEventListener('click', () => setActiveImage(idx));
-      thumbContainer.appendChild(thumbDiv);
-    });
+    const thumbImg = document.createElement('img');
+    thumbImg.src = imgUrl;
+    thumbImg.alt = `Product image ${idx + 1}`;
+    thumbImg.onerror = function() {
+      // If image fails to load, show a placeholder
+      this.src = "https://placehold.co/85x85/FCE9D8/D97706?text=Image+"+(idx+1);
+      this.style.objectFit = "contain";
+    };
     
-    // تعيين الصورة الأولى
-    if (productImages[0]) {
-      mainImg.src = productImages[0];
-      mainImg.onload = function() {
-        mainImg.style.display = 'block';
-        imgPlaceholderDiv.style.display = 'none';
-      };
-      mainImg.onerror = function() {
-        // إذا فشلت الصورة الرئيسية نظهر placeholder
-        imgPlaceholderDiv.style.display = 'flex';
-        mainImg.style.display = 'none';
-      };
-      // محاولة التحميل
-      if (mainImg.complete && mainImg.naturalHeight !== 0) {
-        mainImg.style.display = 'block';
-        imgPlaceholderDiv.style.display = 'none';
-      }
-    }
+    thumbDiv.appendChild(thumbImg);
+    thumbDiv.addEventListener('click', () => setActiveImage(idx));
+    thumbContainer.appendChild(thumbDiv);
+  });
+
+  // Load the first image
+  if (productImages.length > 0) {
+    mainImg.src = productImages[0];
+    mainImg.onload = function() {
+      mainImg.style.display = 'block';
+      imgPlaceholderDiv.style.display = 'none';
+    };
+    mainImg.onerror = function() {
+      // If main image fails, keep placeholder but try to show
+      imgPlaceholderDiv.innerHTML = '<i class="fas fa-image"></i><div>Click thumbnails to view images</div><div style="font-size:12px">Make sure images are in the same folder: 1-hatbag.jpeg, etc.</div>';
+    };
   }
 
-  // ------------------------------
-  // 6. إرسال النموذج
-  // ------------------------------
+  // =============================================
+  // 6. FORM SUBMISSION
+  // =============================================
   const toastMsg = document.getElementById('globalToast');
-  function showNotif(message, isError = false) {
+  
+  function showNotification(message, isError = false) {
     toastMsg.textContent = message;
     toastMsg.style.background = isError ? '#b91c1c' : '#2c5e2f';
     toastMsg.classList.add('show');
@@ -616,12 +610,13 @@
     let quantity = parseInt(quantityInput.value);
     if (isNaN(quantity) || quantity < 1) quantity = 1;
 
-    if (!fullName) { showNotif("❌ الرجاء إدخال الاسم الكامل", true); return; }
-    if (!phone) { showNotif("📱 يرجى كتابة رقم الهاتف", true); return; }
+    // Validation
+    if (!fullName) { showNotification("❌ Please enter your full name", true); return; }
+    if (!phone) { showNotification("📱 Please enter your phone number", true); return; }
     const phoneDigits = phone.replace(/\D/g, '');
-    if (phoneDigits.length < 9) { showNotif("⚠️ رقم الهاتف يجب أن يحتوي على 9 أرقام على الأقل", true); return; }
-    if (!wilaya) { showNotif("🗺️ اختر الولاية من القائمة", true); return; }
-    if (!commune) { showNotif("🏘️ اكتب اسم البلدية أو المنطقة", true); return; }
+    if (phoneDigits.length < 9) { showNotification("⚠️ Phone number must have at least 9 digits", true); return; }
+    if (!wilaya) { showNotification("🗺️ Please select your wilaya", true); return; }
+    if (!commune) { showNotification("🏘️ Please enter your commune", true); return; }
 
     const deliveryCost = getDeliveryFee(wilaya);
     const productPrice = 3490;
@@ -629,29 +624,31 @@
     const totalAmount = subtotal + deliveryCost;
 
     const orderData = {
-      المنتج: "قبعة صيفية + حقيبة يد أنيقة",
-      الاسم: fullName,
-      الهاتف: phone,
-      الولاية: wilaya,
-      البلدية: commune,
-      الكمية: quantity,
-      سعر_الوحدة: productPrice + " دج",
-      تكلفة_التوصيل: deliveryCost + " دج",
-      الإجمالي: totalAmount + " دج",
+      product: "Summer Hat + Elegant Handbag",
+      fullName: fullName,
+      phone: phone,
+      wilaya: wilaya,
+      commune: commune,
+      quantity: quantity,
+      unitPrice: productPrice + " DZD",
+      deliveryCost: deliveryCost + " DZD",
+      totalAmount: totalAmount + " DZD",
       timestamp: new Date().toISOString()
     };
 
-    // حفظ في localStorage
+    // Save to localStorage (orders can be viewed in browser console)
     let previousOrders = [];
-    const storedOrders = localStorage.getItem('chapeau_bag_orders');
+    const storedOrders = localStorage.getItem('hat_bag_orders');
     if (storedOrders) {
       try { previousOrders = JSON.parse(storedOrders); } catch(e) {}
     }
     previousOrders.push(orderData);
-    localStorage.setItem('chapeau_bag_orders', JSON.stringify(previousOrders));
-    console.log("طلب قبعة + حقيبة:", orderData);
-
-    showNotif(`✅ تم استلام طلبك! ${fullName}، سنتصل بك قريبًا على ${phone}. الإجمالي (مع التوصيل): ${totalAmount} دج`, false);
+    localStorage.setItem('hat_bag_orders', JSON.stringify(previousOrders));
+    
+    console.log("New order:", orderData);
+    showNotification(`✅ Order received! ${fullName}, we'll call you at ${phone}. Total (with delivery): ${totalAmount} DZD`, false);
+    
+    // Optionally reset focus
     document.getElementById('fullName').focus();
   });
 </script>
